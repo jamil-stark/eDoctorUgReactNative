@@ -1,5 +1,6 @@
 #EDOCTORUG
 The app is for an online hospital EdoctorUg.
+we used expo
 
 #The following dependencies are installed for it's development.
 
@@ -12,3 +13,15 @@ The app is for an online hospital EdoctorUg.
 ├── react-native@0.70.5
 └── react@18.1.0
 
+#Install the document picker for ios
+
+yarn add react-native-document-picker 
+
+------------ OR --------------
+
+npm i react-native-document-picker
+
+
+#additional dependencies
+npm install -g eas-cli
+npx expo install expo-dev-client
