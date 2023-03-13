@@ -3,24 +3,24 @@ import { StyleSheet, View, Text, FlatList, Alert } from "react-native";
 import { Card, FAB } from "react-native-paper";
 
 function Home() {
-  const [data, setData] = useState([{ name: "First Name" }]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.43.28:8000/signup/accounts/", {
+    fetch("http://192.168.248.1:900/signup/accounts/", { //used an ip address which is not localhost because localhost was conflicting with the android simulator...No conflicts surface wgen testing on ios emulators. 
        method: "GET" //point to our url of the api with a get method (to get the accounts)
       })
       .then(resp => resp.json()) //receive response then convert it to json. Since it returns a promise.
       .then(data => {
-        console.log(data)
+        setData(data)
       })
-      .catch(error => console.log("Error")) //Catch the error and print in the terminal
+      .catch(error => Alert.alert("Error", error)) //Catch the error and display it.
     
   }, []);
  
   const renderData = (item) => {
     return (
       <Card style={styles.waya}>
-        <Text style={{ fontSize: 25 }}>{item.name}</Text>
+        <Text style={{ fontSize: 25 }}>{item.firstname} {item.lastname}</Text>
       </Card>
     );
   };
